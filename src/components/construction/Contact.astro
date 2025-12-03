@@ -1,0 +1,89 @@
+---
+import { Icon } from 'astro-icon/components'
+import type { Link } from 'src/types/common';
+
+interface ContactInfo {
+  label: string; // e.g. "Office", "Email", "Telephone"
+  value: string; // the actual text
+  type?: string; // optional helper
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  description: string;
+  contactInfo: Array<ContactInfo>;
+  socialLinks?: Array<Link>;
+  socialTitle?: string;
+}
+
+const {
+  title,
+  subtitle,
+  description,
+  contactInfo = [],
+  socialLinks = [],
+  socialTitle,
+} = Astro.props as Props;
+---
+
+<section id="contact" class="black-section-with-margin rounded-lg">
+  <div class="mx-auto max-w-6xl px-6 py-12">
+    <!-- Badge -->
+    <h2 class="badgeGrey">{title}</h2>
+
+    <!-- Headline -->
+    <h3 class="text-white">{subtitle}</h3>
+    <p class="paragraph text-gray-300">{description}</p>
+
+    <!-- Info + socials grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+      <div class="space-y-4">
+        {contactInfo.map(({ label, value, type }) => {
+          let href = "";
+          if (type === "address") {
+            href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(value)}`;
+          } else if (type === "email") {
+            href = `mailto:${value}`;
+          } else if (type === "phone") {
+            href = `tel:${value}`;
+          }
+
+          return (
+            <p>
+              <span class="contact-label">{label}:</span>
+              <a
+                href={href}
+                target={type === "address" ? "_blank" : undefined}
+                rel={type === "address" ? "noopener noreferrer" : undefined}
+                class="contact-link"
+              >
+                {value}
+              </a>
+            </p>
+          );
+        })}
+      </div>
+
+      {socialLinks?.length > 0 && (
+        <div>
+          <p class="contact-label">{socialTitle}</p>
+          <ul class="flex gap-6">
+            {socialLinks.map(({ ariaLabel, href, icon }) => (
+              <li>
+                <a
+                  href={href}
+                  target="_blank"
+                  aria-label={ariaLabel}
+                  class="text-white hover:text-blue-400 transition-colors"
+                >
+                  <Icon name={icon} class="w-6 h-6" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

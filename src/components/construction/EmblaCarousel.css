@@ -1,0 +1,74 @@
+.embla {
+  position: relative;
+  width: 100%;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  will-change: transform;
+}
+
+.embla__slide {
+  position: relative;
+  flex: 0 0 100%;
+}
+
+.embla__slide__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Arrows */
+.embla__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.embla__button--prev { left: 8px; }
+.embla__button--next { right: 8px; }
+
+.embla__button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Dots */
+.embla__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.embla__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #c7c7c7;
+  border: 0;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.embla__dot:hover { transform: scale(1.1); }
+.embla__dot.is-selected { background: #2d2d2d; }

@@ -1,0 +1,76 @@
+---
+import Layout from "src/layouts/Layout.astro";
+import { getEntry } from "astro:content";
+
+import InfiniteImageSlider from "src/components/construction/InfiniteImageSlider.astro";
+import StatsSection from "src/components/construction/StatsSection.astro";
+import Footer from "src/components/construction/Footer.astro";
+import HeroBanner from "src/components/construction/HeroBanner.astro";
+import ServicesSection from "src/components/construction/ServicesSection";
+import Contact from "src/components/construction/Contact.astro";
+import About from "src/components/construction/About.astro";
+import WorkSection from "src/components/construction/WorkSection.astro";
+import Metadata from "src/components/Metadata.astro";
+
+const locale = Astro.currentLocale;
+const home = await getEntry("home", locale!);
+const d = home?.data!;
+---
+<Layout>
+  <head slot="head">
+    <Metadata seo={d.seo} />
+  </head>
+  
+  <HeroBanner
+    title={d.hero.title}
+    description={d.hero.description}
+    image={d.hero.image}
+    buttonLabel={d.hero.buttonLabel}
+    buttonHref={d.hero.buttonHref}
+    navLinks={d.hero.navLinks}
+    logoText={d.hero.logoText}
+  />
+
+  <About
+    badge={d.about.badge}
+    title={d.about.title}
+    description={d.about.description}
+  />
+
+  <InfiniteImageSlider
+    images={d.sliderImages.map(i => ({ src: i.image, alt: i.alt }))}
+    speed={100}
+    gap={30}
+    width={300}
+  />
+
+  <StatsSection stats={d.stats} />
+
+  <WorkSection
+    id="our-work"
+    badge={d.workSection.badge}
+    headline={d.workSection.headline}
+    description={d.workSection.description}
+    works={d.workSection.works}
+  />
+
+  <ServicesSection 
+    header={d.servicesSection.header} 
+    services={d.servicesSection.services
+      .map(s => ({...s, image: s.image.src, icon: s.icon.src,}))} 
+    client:visible 
+  />
+
+  <Contact {...d.contact} />
+
+  <Footer
+    logoText={d.footer.logoText}
+    year={d.footer.year}
+    companyName={d.footer.companyName}
+    header={d.footer.header}
+    leftLinks={d.footer.leftLinks}
+    rightLinks={d.footer.rightLinks}
+    designerName={d.footer.designerName}
+    designerUrl={d.footer.designerUrl}
+  />
+</Layout>

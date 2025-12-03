@@ -1,0 +1,141 @@
+locale: en
+hero:
+  title: Your trusted partner for construction & renovation services
+  description: >
+    We create durable, functional and beautiful spaces with a focus on quality
+    craftsmanship and professional reliability.
+  image: '@assets/images/construction/en/hero/image.jpg'
+  buttonLabel: Contact us
+  buttonHref: '#contact'
+  logoText: SolidBuild
+  navLinks:
+    - label: About
+      href: '#about'
+    - label: Services
+      href: '#services'
+    - label: Our work
+      href: '#our-work'
+    - label: Contact
+      href: '#contact'
+about:
+  badge: About us
+  title: Specialists in renovation & construction
+  description: >
+    With years of experience in repairs, masonry, stone, marble, flooring and
+    full property renovations, we provide durable and high-quality construction
+    solutions.
+sliderImages:
+  - image: '@assets/images/construction/en/sliderImages/0/image.jpg'
+    alt: Modern House
+  - image: '@assets/images/construction/en/sliderImages/1/image.jpg'
+    alt: White Courtyard
+  - image: '@assets/images/construction/en/sliderImages/2/image.jpg'
+    alt: Bedroom Interior
+  - image: '@assets/images/construction/en/sliderImages/3/image.jpg'
+    alt: Stone Pathway
+stats:
+  - value: '8'
+    label: Years of experience
+    description: Years of improving homes with skill and craftsmanship
+  - value: '40'
+    label: Completed projects
+    description: Successfully delivered projects across residential properties
+  - value: '12'
+    label: Skilled tradespeople
+    description: A dedicated team ensuring high-quality results
+  - value: 100%
+    label: Client satisfaction
+    description: Our work consistently meets and exceeds client expectations
+workSection:
+  badge: Our work
+  headline: Explore our recent projects
+  description: >
+    Take a look at renovation and construction projects completed with precision
+    and attention to detail.
+  works:
+    - title: Kitchen Renovation
+      description: Custom surfaces, precise alignments and durable materials.
+      image: '@assets/images/construction/services/en/workSection/works/0/image.jpg'
+      theme: light
+    - title: Outdoor Stone Path
+      description: Long-lasting paving work designed for aesthetics and durability.
+      image: '@assets/images/construction/services/en/workSection/works/1/image.png'
+      theme: dark
+    - title: Bathroom Upgrade
+      description: Modern tiles, clean finishes and ergonomic layouts.
+      image: '@assets/images/construction/services/en/workSection/works/2/image.jpg'
+      theme: light
+servicesSection:
+  header:
+    badge: Services
+    heading: What we offer
+    paragraph: Choose the services that best fit the needs of your project.
+  services:
+    - title: Repairs
+      description: Small repairs and finishing work with clean, precise results.
+      image: >-
+        @assets/images/construction/services/en/servicesSection/services/0/image.jpg
+      icon: '@assets/icons/construction/en/servicesSection/services/0/icon.svg'
+    - title: Masonry
+      description: Walls, partitions and structural modifications.
+      image: >-
+        @assets/images/construction/services/en/servicesSection/services/1/image.jpg
+      icon: '@assets/icons/construction/en/servicesSection/services/1/icon.svg'
+    - title: Stone & Marble
+      description: Natural stone installations and durable surface finishes.
+      image: >-
+        @assets/images/construction/services/en/servicesSection/services/2/image.jpg
+      icon: '@assets/icons/construction/en/servicesSection/services/2/icon.svg'
+contact:
+  title: Contact
+  subtitle: Get in touch
+  description: >
+    For inquiries, estimates or collaboration, feel free to contact us using the
+    details below.
+  contactInfo:
+    - label: Address
+      value: London, United Kingdom
+      type: address
+    - label: Email
+      value: info@solidbuild.com
+      type: email
+    - label: Telephone
+      value: +44 7716 000000
+      type: phone
+  socialLinks:
+    - ariaLabel: LinkedIn
+      href: https://gr.linkedin.com/in/aggelosisoufi
+      icon: mdi:linkedin
+  socialTitle: Connect with us
+footer:
+  logoText: SolidBuild
+  year: 2025
+  companyName: SolidBuild Construction
+  header:
+    quickLinksTitle: Quick links
+  leftLinks:
+    - label: Home
+      href: /
+    - label: Services
+      href: '#services'
+    - label: Our work
+      href: '#our-work'
+  rightLinks:
+    - label: Contact
+      href: '#contact'
+    - label: Privacy Policy
+      href: /privacy
+    - label: Terms of Service
+      href: /terms
+  designerName: Angelos Isoufi
+  designerUrl: https://gr.linkedin.com/in/aggelosisoufi
+seo:
+  title: Construction & Renovation Services | SolidBuild
+  description: >
+    Professional renovation and construction services including masonry,
+    stonework, flooring and full property improvements.
+  canonical: https://solidbuild.com/en/
+  openGraphImage: '@assets/images/seo/en/seo/openGraphImage.png'
+  robots:
+    index: true
+    follow: true

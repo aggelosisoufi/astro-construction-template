@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+interface WorkItem {
+  title: string;
+  description: string;
+  image: ImageMetadata;
+  theme?: string;
+}
+interface Props {
+  works: WorkItem[];
+}
+const { works } = Astro.props as Props;
+---
+
+<section id="work" class="relative">
+  <div>
+    {works.map((work) => (
+      <article
+        class="sticky top-0 h-auto md:h-screen flex justify-center p-4 md:p-28 no-sticky"
+      >
+        <div
+          class={`relative w-full md:w-3/4 rounded-2xl shadow-xl overflow-hidden ${
+            work.theme === "dark"
+              ? "bg-gray-900 text-white"
+              : "bg-white text-gray-900"
+          }`}
+        >
+
+          <!-- Background image -->
+          <Image
+            src={work.image}
+            alt={work.title}
+            class="absolute inset-0 w-full h-full object-cover opacity-60 md:opacity-40"
+            loading="lazy"
+            fit="cover"
+            format="webp"
+          />
+
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 
+            to-transparent md:bg-none"></div>
+
+          <!-- Content -->
+          <div class="relative z-10 flex items-end 
+            md:items-center justify-center h-[60vh] md:h-full text-center p-6 md:p-12">
+            <div class="pb-12 md:pb-0">
+              <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4 md:mb-6 font-sans">
+                {work.title}
+              </h2>
+              <p class="text-base md:text-xl max-w-xl mx-auto">
+                {work.description}
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+

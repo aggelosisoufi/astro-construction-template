@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+@theme {
+  /* =======================
+     Fonts
+  ======================== */
+  --font-sans: "Manrope", sans-serif;
+}
+
+@layer base {
+  :root {
+    /* H4 system variables */
+    --h4-font-size-mobile: 20px;
+    --h4-font-size-md: 22px;
+    --h4-font-size-lg: 24px;
+    --h4-font-weight: 400;
+    --h4-line-height: 1.1;       /* 110% like in Framer */
+    --h4-letter-spacing: -0.4px;
+    --h4-paragraph-spacing: 20px;
+    --h4-color: #ffffff;         /* gray-900 as base */
+
+    /* H3 system variables */
+    --h3-font-size-mobile: 38px;
+    --h3-font-size-md: 42px;
+    --h3-font-size-lg: 50px;
+    --h3-font-weight: 400;
+    --h3-line-height: 1.25;
+    --h3-letter-spacing: -0.8px;
+    --h3-paragraph-spacing: 10px;
+
+    /* H3 system variables */
+    --h2-font-size: 16px;
+    --h2-font-weight: 400;
+
+    /* Paragraph system variables */
+    --p-font-size-mobile: 16px;
+    --p-font-size-md: 18px;
+    --p-font-size-lg: 20px;
+    --p-font-weight: 300;
+    --p-line-height: 1.5;
+    --p-letter-spacing: -0.3px;
+    --p-color: #4b5563; /* Tailwind gray-600 */
+    --p-margin-bottom: 20px;
+  }
+
+
+  /* H1: 34 → 51 → 58 */
+  h1 {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  @media (min-width: 768px) { /* md */
+    h1 {
+      font-size: 51px;
+    }
+  }
+  @media (min-width: 1024px) { /* lg */
+    h1 {
+      font-size: 58px;
+    }
+  }
+
+  /* H2: always 16 */
+  h2 {
+    font-size: var(--h2-font-size);
+    font-weight: var(--h2-font-weight);
+  }
+
+  h3 {
+    font-size: var(--h3-font-size-mobile);
+    font-weight: var(--h3-font-weight);
+    line-height: var(--h3-line-height);
+    letter-spacing: var(--h3-letter-spacing);
+    margin-bottom: var(--h3-paragraph-spacing);
+  }
+
+  @media (min-width: 768px) {
+    h3 {
+      font-size: var(--h3-font-size-md);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    h3 {
+      font-size: var(--h3-font-size-lg);
+    }
+  }
+
+  h4 {
+    font-family: var(--font-sans);
+    font-size: var(--h4-font-size-mobile);
+    font-weight: var(--h4-font-weight);
+    line-height: var(--h4-line-height);
+    letter-spacing: var(--h4-letter-spacing);
+    margin-bottom: var(--h4-paragraph-spacing);
+    color: var(--h4-color);
+  }
+
+  @media (min-width: 768px) {
+    h4 {
+      font-size: var(--h4-font-size-md);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    h4 {
+      font-size: var(--h4-font-size-lg);
+    }
+  }
+
+  /* Default paragraph (for body text) */
+  .paragraph {
+    font-family: var(--font-sans);
+    font-size: var(--p-font-size-mobile);
+    font-weight: var(--p-font-weight);
+    line-height: var(--p-line-height);
+    letter-spacing: var(--p-letter-spacing);
+    color: var(--p-color);
+    margin-bottom: var(--p-margin-bottom);
+  }
+
+  @media (min-width: 768px) {
+    .paragraph {
+      font-size: var(--p-font-size-md);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .paragraph {
+      font-size: var(--p-font-size-lg);
+    }
+  }
+}
+
+@layer components {
+  /* 
+    Badge component:
+    Reusable pill-shaped label for section headings (e.g. "Services", "Contact").
+    Uses Tailwind's CSS variables so it stays in sync with your theme colors.
+    Keep the typography simple (14px) and spacing consistent.
+  */
+  .badgeBlack {
+    display: inline-block;
+    background-color: var(--color-gray-900);
+    color: var(--color-white);
+    @apply py-0.5 px-3 mb-2;
+    border-radius: 9999px; /* rounded-full */
+  }
+
+  .badgeGrey {
+    display: inline-block;
+    background-color: var(--color-gray-800);
+    color: var(--color-white);
+    @apply py-0.5 px-3 mb-2;
+    border-radius: 9999px; /* rounded-full */
+  }
+
+  .logo-text-lg {
+    font-size: 3rem; /* text-3xl = 30px */
+    font-weight: 700;    /* font-bold */
+    color: #ffffff;      /* text-white */
+  }
+  
+  .black-section-with-margin {
+    @apply bg-neutral-900 text-gray-300 rounded-t-lg mt-4 mx-4;
+  }
+
+  .contact-label {
+    @apply font-bold text-white mr-2 mb-2;
+  }
+
+  .contact-link {
+    @apply text-white hover:text-blue-400 hover:underline transition-colors;
+  }
+
+  @media (min-width: 2500px) {
+    .no-sticky {
+      position: relative !important;
+      max-height: 1000px !important;
+    }
+  }
+}
+
+@keyframes slideDown {
+  from { height: 0 }
+  to { height: var(--radix-accordion-content-height) }
+}
+
+@keyframes slideUp {
+  from { height: var(--radix-accordion-content-height) }
+  to { height: 0 }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 500ms ease-in-out forwards;
+}
+
+.animate-slideDown {
+  animation: slideDown 300ms ease-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 300ms ease-out forwards;
+}
+

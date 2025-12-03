@@ -1,0 +1,91 @@
+---
+interface Stat {
+  value: string
+  label: string
+  description: string
+}
+
+interface Props {
+  stats: Stat[]
+}
+
+const { stats } = Astro.props
+---
+
+<section id="stats" class="bg-white py-16">
+  <div class="mx-auto max-w-6xl px-10">
+    <div class="grid grid-cols-1 gap-20 text-left sm:grid-cols-2 lg:grid-cols-4">
+      {stats.map((stat, i) => {
+        // Extract numeric part (so "100%" still animates up to 100)
+        const numericValue = parseInt(stat.value.replace(/\D/g, ""), 10)
+        const suffix = stat.value.replace(/[0-9]/g, "")
+
+        return (
+          <div>
+            <!-- Number -->
+            <p
+              class="stat-value font-sans text-[72px] font-light tracking-[-0.8px] leading-[100%] text-black"
+              data-target={numericValue}
+              data-suffix={suffix}
+            >
+              0
+            </p>
+
+            <!-- Label -->
+            <h4 class="mt-2 mb-1 font-sans text-xl font-semibold text-gray-900">
+              {stat.label}
+            </h4>
+
+            <!-- Description -->
+            <p class="mt-1 font-sans text-sm text-gray-700 leading-relaxed">
+              {stat.description}
+            </p>
+          </div>
+        )
+      })}
+    </div>
+  </div>
+
+  <script>
+    function animateCount(el: HTMLElement, target: number, suffix: string) {
+      let current = 0
+      const duration = 2000 // ms
+      const stepTime = Math.max(Math.floor(duration / target), 20)
+      const increment = Math.ceil(target / (duration / stepTime))
+
+      const timer = setInterval(() => {
+        current += increment
+        if (current >= target) {
+          el.textContent = target.toString() + suffix
+          clearInterval(timer)
+        } else {
+          el.textContent = current.toString() + suffix
+        }
+      }, stepTime)
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement
+            const targetAttr = el.getAttribute("data-target")
+            const suffixAttr = el.getAttribute("data-suffix")
+
+            // Safely parse
+            const target = targetAttr ? parseInt(targetAttr, 10) : 0
+            const suffix = suffixAttr ?? ""
+
+            animateCount(el, target, suffix)
+            obs.unobserve(el) // only animate once
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    document.querySelectorAll<HTMLElement>(".stat-value").forEach(el => {
+      observer.observe(el)
+    })
+  </script>
+</section>

@@ -1,0 +1,32 @@
+dist/
+.astro/
+
+node_modules/
+
+.env
+.env.local
+.env.production
+.env.*.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+.vercel/
+
+.idea/               # JetBrains (WebStorm, IntelliJ)
+.vscode/             # VS Code settings
+*.swp                # Vim swap files
+
+.DS_Store            # macOS junk
+Thumbs.db            # Windows junk
+desktop.ini
+
+.keystatic/
+
+astro.config.mjs.timestamp
+
+*.log
+*.tmp
+*.bak

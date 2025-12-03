@@ -1,0 +1,53 @@
+---
+import merge from "lodash.merge";
+import { AstroSeo } from "@astrolib/seo";
+import type { Props as AstroSeoProps } from "@astrolib/seo";
+
+export interface Props {
+  seo: {
+    title: string;
+    description: string;
+    canonical?: string;
+    openGraphImage?: { src: string };
+    robots?: { index?: boolean; follow?: boolean };
+  };
+}
+
+const { seo } = Astro.props;
+
+const canonicalUrl = seo.canonical ?? new URL(Astro.url.pathname, Astro.site);
+
+const seoProps: AstroSeoProps = merge(
+  {
+    title: seo.title,
+    description: seo.description,
+    canonical: canonicalUrl.toString(),
+    noindex: seo.robots?.index === false,
+    nofollow: seo.robots?.follow === false,
+    openGraph: {
+      url: canonicalUrl.toString(),
+      type: "website",
+      images: seo.openGraphImage
+        ? [{ url: seo.openGraphImage.src, width: 1200, height: 630 }]
+        : [],
+    },
+    twitter: {
+      cardType: seo.openGraphImage ? "summary_large_image" : "summary",
+    },
+  }
+);
+
+const siteUrl = Astro.site?.toString() || "https://yourwebsite.com";
+const hreflangs = [
+  { lang: "en", url: `${siteUrl}/en/` },
+  { lang: "el", url: `${siteUrl}/el/` },
+  { lang: "x-default", url: `${siteUrl}/` },
+];
+
+---
+
+<AstroSeo {...seoProps} />
+
+{hreflangs.map(({ lang, url }) => (
+  <link rel="alternate" hreflang={lang} href={url} />
+))}

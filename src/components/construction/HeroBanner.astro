@@ -1,0 +1,157 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface NavLink { label: string; href: string }
+
+interface Props {
+  title: string;
+  description: string;
+  image: ImageMetadata;       // pass the imported image object
+  buttonLabel: string;
+  buttonHref: string;
+  navLinks: NavLink[];
+  logoText: string;
+}
+
+const { title, description, image, buttonLabel, buttonHref, navLinks, logoText } = Astro.props;
+---
+
+<section class="relative h-[760px] text-white mb-16">
+  <!-- Background -->
+  <div class="absolute inset-0">
+    <Image
+      src={image}
+      alt=""
+      class="w-full h-full object-cover"
+      format="webp"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-black/60"></div>
+  </div>
+
+  <!-- Header / Nav -->
+  <header class="relative z-30">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between py-6">
+      <h2
+        class="text-2xl font-bold cursor-pointer"
+        onclick="window.location.reload()"
+      >
+        {logoText}
+      </h2>
+
+      <!-- Desktop nav (centered) -->
+      <nav class="hidden md:flex gap-10">
+        {navLinks.map((l) => (
+          <a href={l.href} class="hover:text-gray-300 transition">{l.label}</a>
+        ))}
+      </nav>
+
+      <!-- Mobile hamburger -->
+      <button id="menu-button" class="md:hidden flex flex-col gap-1.5 z-40" aria-label="Toggle menu" aria-expanded="false">
+        <span class="block w-6 h-0.5 bg-white transition-all"></span>
+        <span class="block w-6 h-0.5 bg-white transition-all"></span>
+        <span class="block w-6 h-0.5 bg-white transition-all"></span>
+      </button>
+    </div>
+
+    <!-- Backdrop overlay -->
+    <div
+        id="menu-overlay"
+        class="fixed inset-0 z-20 opacity-0 pointer-events-none transition-opacity duration-500
+                bg-[rgba(16,16,20,0.6)] backdrop-blur-md">
+    </div>
+
+    <!-- Slide-in drawer -->
+    <nav
+        id="mobile-menu"
+        class="fixed inset-y-0 right-0 z-30 w-[85vw] max-w-sm h-full
+                px-8 py-16 flex flex-col gap-10 text-2xl
+                backdrop-blur-xl
+                translate-x-full transition-transform duration-500">
+        {navLinks.map((l) => (
+            <a href={l.href} class="hover:text-gray-300">{l.label}</a>
+        ))}
+    </nav>
+
+    </nav>
+  </header>
+
+  <!-- Content -->
+  <div class="relative z-10 flex items-center h-full">
+    <div class="max-w-6xl mx-auto px-6 lg:px-12">
+      <div class="max-w-xl space-y-6">
+        <h1>
+          {title}
+        </h1>
+        <p class="paragraph text-gray-100">
+          {description}
+        </p>
+
+        <!-- Button (mobile-friendly animations: hover + active + focus) -->
+        <a
+          href={buttonHref}
+          class="group inline-flex items-center gap-2 px-6 py-3 rounded-full
+                 border border-white/20 backdrop-blur-md transition-all duration-300
+                 bg-white/10 text-white
+                 hover:bg-white hover:text-black
+                 active:bg-white active:text-black
+                 focus:bg-white focus:text-black"
+        >
+          <span>{buttonLabel}</span>
+          <span
+            class="flex items-center justify-center w-6 h-6 rounded-full bg-white text-black
+                  text-sm leading-none"
+          >
+            →
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById("menu-button") as HTMLButtonElement | null
+  const overlay = document.getElementById("menu-overlay") as HTMLDivElement | null
+  const drawer = document.getElementById("mobile-menu") as HTMLDivElement | null
+  const bars = btn?.querySelectorAll("span")
+
+  function lockScroll(lock: boolean): void {
+    document.documentElement.classList.toggle("overflow-hidden", lock)
+    document.body.classList.toggle("overflow-hidden", lock)
+  }
+
+  function toggleMenu(forceOpen?: boolean): void {
+    const isClosed = drawer?.classList.contains("translate-x-full")
+    const willOpen = forceOpen !== undefined ? forceOpen : isClosed
+
+    drawer?.classList.toggle("translate-x-full", !willOpen)
+    drawer?.classList.toggle("translate-x-0", willOpen)
+
+    overlay?.classList.toggle("opacity-0", !willOpen)
+    overlay?.classList.toggle("pointer-events-none", !willOpen)
+
+    bars?.forEach((b, i) => {
+      if (i === 0) {
+        b.classList.toggle("translate-y-2", willOpen)
+        b.classList.toggle("rotate-45", willOpen)
+      }
+      if (i === 1) b.classList.toggle("opacity-0", willOpen)
+      if (i === 2) {
+        b.classList.toggle("-translate-y-2", willOpen)
+        b.classList.toggle("-rotate-45", willOpen)
+      }
+    })
+
+    btn?.setAttribute("aria-expanded", String(!!willOpen))
+    lockScroll(!!willOpen)
+  }
+
+  btn?.addEventListener("click", () => toggleMenu())
+  overlay?.addEventListener("click", () => toggleMenu(false))
+  drawer?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => toggleMenu(false)))
+  window.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.key === "Escape") toggleMenu(false)
+  })
+</script>

@@ -1,0 +1,140 @@
+locale: el
+hero:
+  title: Ο αξιόπιστος συνεργάτης σας για οικοδομικές εργασίες & ανακαινίσεις
+  description: >
+    Δημιουργούμε όμορφους και λειτουργικούς χώρους με έμφαση στην ποιότητα, την
+    τεχνική αρτιότητα και την επαγγελματική συνέπεια.
+  image: '@assets/images/construction/el/hero/image.jpg'
+  buttonLabel: Επικοινωνία
+  buttonHref: '#contact'
+  logoText: SolidBuild
+  navLinks:
+    - label: Σχετικά
+      href: '#about'
+    - label: Υπηρεσίες
+      href: '#services'
+    - label: Έργα
+      href: '#our-work'
+    - label: Επικοινωνία
+      href: '#contact'
+about:
+  badge: Ποιοι είμαστε
+  title: Ειδικοί στις ανακαινίσεις & οικοδομικές εργασίες
+  description: >
+    Με πολυετή εμπειρία σε μερεμέτια, χτισίματα, πέτρα, μάρμαρα, δάπεδα και
+    γενικές ανακαινίσεις, προσφέρουμε ολοκληρωμένες λύσεις με ποιότητα και
+    αξιοπιστία.
+sliderImages:
+  - image: '@assets/images/construction/el/sliderImages/0/image.jpg'
+    alt: Σύγχρονη κατοικία
+  - image: '@assets/images/construction/el/sliderImages/1/image.jpg'
+    alt: Λευκή αυλή
+  - image: '@assets/images/construction/el/sliderImages/2/image.jpg'
+    alt: Υπνοδωμάτιο
+  - image: '@assets/images/construction/el/sliderImages/3/image.jpg'
+    alt: Πλακόστρωτο
+stats:
+  - value: '8'
+    label: Χρόνια εμπειρίας
+    description: Βελτιώνουμε σπίτια με μεράκι και τεχνογνωσία
+  - value: '40'
+    label: Ολοκληρωμένα έργα
+    description: Δεκάδες επιτυχημένες παραδόσεις με ποιοτικό αποτέλεσμα
+  - value: '12'
+    label: Εξειδικευμένοι τεχνίτες
+    description: Επαγγελματίες με γνώση και συνέπεια
+  - value: 100%
+    label: Ικανοποίηση πελατών
+    description: Οι πελάτες μας εμπιστεύονται για την ποιότητα και το ήθος μας
+workSection:
+  badge: Έργα
+  headline: Δείγματα δουλειάς
+  description: >
+    Δείτε έργα που ολοκληρώσαμε με έμφαση στη λεπτομέρεια, τη λειτουργικότητα
+    και την αντοχή στον χρόνο.
+  works:
+    - title: Ανακαίνιση κουζίνας
+      description: Σύγχρονες λύσεις, σωστές ευθυγραμμίσεις και ανθεκτικά υλικά.
+      image: '@assets/images/construction/services/el/workSection/works/0/image.jpg'
+      theme: light
+    - title: Πλακόστρωση αυλής
+      description: Καλαίσθητες επιφάνειες με ανθεκτικές αρμολογήσεις.
+      image: '@assets/images/construction/services/el/workSection/works/1/image.png'
+      theme: dark
+    - title: Ανακαίνιση μπάνιου
+      description: Ποιοτικά πλακίδια και εργονομικός σχεδιασμός για άνεση και αισθητική.
+      image: '@assets/images/construction/services/el/workSection/works/2/image.jpg'
+      theme: light
+servicesSection:
+  header:
+    badge: Υπηρεσίες
+    heading: Τι προσφέρουμε
+    paragraph: Επιλέξτε τις εργασίες που ταιριάζουν στις ανάγκες του χώρου σας.
+  services:
+    - title: Μερεμέτια
+      description: Μικροεργασίες και επισκευές με άψογο τελείωμα.
+      image: >-
+        @assets/images/construction/services/el/servicesSection/services/0/image.jpg
+      icon: '@assets/icons/construction/el/servicesSection/services/0/icon.svg'
+    - title: Χτισίματα
+      description: Τοιχοποιίες, χωρίσματα και διαμορφώσεις χώρων.
+      image: >-
+        @assets/images/construction/services/el/servicesSection/services/1/image.jpg
+      icon: '@assets/icons/construction/el/servicesSection/services/1/icon.svg'
+    - title: Πέτρα & Μάρμαρα
+      description: Φυσικές επενδύσεις και κατασκευές υψηλής αντοχής.
+      image: >-
+        @assets/images/construction/services/el/servicesSection/services/2/image.jpg
+      icon: '@assets/icons/construction/el/servicesSection/services/2/icon.svg'
+contact:
+  title: Επικοινωνία
+  subtitle: Ελάτε σε επαφή
+  description: |
+    Για πληροφορίες, προσφορές ή συνεργασία, επικοινωνήστε μαζί μας.
+  contactInfo:
+    - label: Τηλέφωνο
+      value: 69xxxxxxxx
+      type: phone
+    - label: Email
+      value: info@solidbuild.gr
+      type: email
+    - label: Διεύθυνση
+      value: Αθήνα, Ελλάδα
+      type: address
+  socialLinks:
+    - ariaLabel: LinkedIn
+      href: https://gr.linkedin.com/in/aggelosisoufi
+      icon: mdi:linkedin
+  socialTitle: Συνδεθείτε μαζί μας
+footer:
+  logoText: SolidBuild
+  year: 2025
+  companyName: SolidBuild Construction
+  header:
+    quickLinksTitle: Σύνδεσμοι
+  leftLinks:
+    - label: Αρχική
+      href: /
+    - label: Υπηρεσίες
+      href: '#services'
+    - label: Έργα
+      href: '#our-work'
+  rightLinks:
+    - label: Επικοινωνία
+      href: '#contact'
+    - label: Πολιτική Απορρήτου
+      href: /privacy
+    - label: Όροι Χρήσης
+      href: /terms
+  designerName: Angelos Isoufi
+  designerUrl: https://gr.linkedin.com/in/aggelosisoufi
+seo:
+  title: Οικοδομικές Εργασίες & Ανακαινίσεις | SolidBuild
+  description: >
+    Εξειδικευμένες υπηρεσίες ανακαινίσεων, χτισμάτων, μαρμάρων και
+    πλακοστρώσεων. Ποιότητα, συνέπεια και αξιοπιστία.
+  canonical: https://solidbuild.com/el/
+  openGraphImage: '@assets/images/seo/el/seo/openGraphImage.png'
+  robots:
+    index: true
+    follow: true

@@ -1,0 +1,111 @@
+---
+interface FooterLink {
+  label: string
+  href: string
+}
+
+interface FooterHeader {
+  quickLinksTitle: string
+}
+
+interface Props {
+  logoText: string
+  year: number
+  companyName: string
+  header: FooterHeader
+  leftLinks: FooterLink[]
+  rightLinks: FooterLink[]
+  designerName?: string
+  designerUrl?: string
+}
+
+const {
+  logoText,
+  year,
+  companyName,
+  header,
+  leftLinks,
+  rightLinks,
+  designerName,
+  designerUrl
+} = Astro.props
+---
+
+<footer class="black-section-with-margin">
+  <!-- Container -->
+  <div class="mx-auto max-w-6xl px-6 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-3 items-start gap-8">
+      <!-- Logo -->
+      <div class="sm:col-span-2">
+        <h2 class="logo-text-lg">{logoText}</h2>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="sm:row-span-1">
+        <h4>{header.quickLinksTitle}</h4>
+        <div class="grid grid-cols-2 gap-4">
+          <ul class="space-y-2">
+            {leftLinks.map(link => (
+              <li>
+                <a href={link.href} class="hover:text-white transition text-l">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <ul class="space-y-2">
+            {rightLinks.map(link => (
+              <li>
+                <a href={link.href} class="hover:text-white transition text-l">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar (static English) -->
+  <div class="border-t border-neutral-700">
+    <div class="mx-auto max-w-6xl px-6 py-4 flex flex-col sm:flex-row justify-between items-center 
+              text-md text-gray-400 gap-2">
+      <p>© {year} {companyName}. All rights reserved.</p>
+      {designerName && designerUrl && (
+        <p>
+          Website design by
+          <a
+            href={designerUrl}
+            target="_blank"
+            rel="noopener"
+            class="text-blue-400 hover:underline ml-1"
+          >
+            {designerName}
+          </a>
+        </p>
+      )}
+
+    <!-- Language Switch Button -->
+    {(() => {
+      const currentLocale = Astro.currentLocale;
+      const pathname = Astro.url.pathname;
+      const targetLocale = currentLocale === "en" ? "el" : "en";
+      const targetPath = pathname.replace(
+        `/${currentLocale}/`,
+        `/${targetLocale}/`
+      );
+
+      return (
+        <a 
+          href={targetPath}
+          class="px-4 py-2 rounded-lg bg-neutral-800 text-white hover:bg-neutral-700 transition 
+                text-sm mt-4 sm:mt-0"
+        >
+          {currentLocale === "en" ? "Ελληνικά" : "English"}
+        </a>
+      );
+    })()}
+    </div>
+  </div>
+</footer>

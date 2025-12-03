@@ -1,0 +1,30 @@
+---
+interface Props {
+  id?: string;
+  badge: string;
+  title: string;
+  description: string;
+}
+
+const {
+  id = "about",
+  badge,
+  title,
+  description,
+} = Astro.props as Props;
+---
+
+<section id={id} class="mx-auto max-w-6xl px-6 py-16">
+  <div class="mx-auto max-w-6xl px-6 py-16 text-center">
+    <!-- Left side: Badge + Title -->
+    <div>
+      <h2 class="badgeBlack">{badge}</h2>
+      <h3>{title}</h3>
+    </div>
+
+    <!-- Right side: Content -->
+    <div>
+      <p class="paragraph">{description}</p>
+    </div>
+  </div>
+</section>

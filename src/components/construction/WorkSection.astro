@@ -1,0 +1,42 @@
+---
+import WorkShowcase from "./WorkShowcase.astro";
+
+interface WorkItem {
+  title: string;
+  description: string;
+  image: ImageMetadata;
+  theme?: string;
+}
+
+interface Props {
+  id?: string;
+  badge: string;
+  headline: string;
+  description: string;
+  works: WorkItem[];
+}
+
+const {
+  id = "work-showcase",
+  badge,
+  headline,
+  description,
+  works = [],
+} = Astro.props as Props;
+---
+
+<section id={id} class="mx-auto max-w-6xl px-6 py-16 text-center">
+  <!-- Badge -->
+  <h2 class="badgeBlack">{badge}</h2>
+
+  <!-- Headline -->
+  <h3>{headline}</h3>
+
+  <!-- Paragraph -->
+  <p class="paragraph">{description}</p>
+
+  <!-- Showcase itself -->
+  <div class="mt-10">
+    <WorkShowcase works={works} />
+  </div>
+</section>
