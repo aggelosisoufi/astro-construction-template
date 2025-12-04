@@ -6,7 +6,11 @@ This template is ideal for:
 - Construction & renovation companies  
 - Freelancers building small business sites  
 - Agencies needing a multilingual starter  
-- Developers who want a clean Astro + CMS architecture  
+- Developers who want a clean Astro + CMS architecture
+
+## 🚀 Live Demo
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-blue?style=for-the-badge)](https://astro-construction-template.vercel.app/)
 
 ---
 
