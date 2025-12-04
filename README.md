@@ -10,7 +10,7 @@ This template is ideal for:
 
 ## 🚀 Live Demo
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-blue?style=for-the-badge)](https://astro-construction-template.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-blue?style=for-the-badge)](https://astro-construction-template.vercel.app/en/)
 
 ---
 
