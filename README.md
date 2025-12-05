@@ -12,6 +12,12 @@ This template is ideal for:
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-blue?style=for-the-badge)](https://astro-construction-template.vercel.app/en/)
 
+## ☕ Support
+
+If this project saved you time or inspired your own work, you can support my open-source efforts:
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-FFDD00?style=flat-square&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/yourdevangel)
+
 ---
 
 ## ✨ Features
